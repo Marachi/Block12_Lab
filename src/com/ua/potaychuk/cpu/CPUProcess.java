@@ -22,11 +22,8 @@ public class CPUProcess extends Thread {
 
         while (!interrupted()) {
             long generateTime = (long) (from+Math.random() * (to-from+1));       //time range to generate new process
-//            System.out.println("Time: " + generateTime);
-            System.out.println("QUEUE BEFOR TRY: " + CPUQueue.cpuProcesses);
             try {
                 CPUQueue.changeSize(CPUQueue.Change.ADD);                        //add to queue
-                System.out.println("QUEUE AFTER ++: " + CPUQueue.cpuProcesses);
                 this.sleep(generateTime);                                        //wait for next generation
             } catch (InterruptedException e) {
 //                e.printStackTrace();

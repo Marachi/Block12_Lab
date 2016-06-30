@@ -23,7 +23,6 @@ public class CPU extends Thread{
         while (!interrupted()) {
            if (CPUQueue.cpuProcesses != 0) {                    //checking for process in queue
                long generateTime = (long) (from+Math.random() * (to-from+1)); //time range of processing process
-               System.out.println("**QUEUE SIZE: " + CPUQueue.cpuProcesses + " Process in CPU!!! Time to serve it: " + generateTime);
                try {
                    this.sleep(generateTime);                        //processing
                    CPUQueue.changeSize(CPUQueue.Change.SUB);        //remove process from queue
