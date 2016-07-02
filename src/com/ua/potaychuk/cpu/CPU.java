@@ -1,5 +1,7 @@
 package com.ua.potaychuk.cpu;
 
+import com.ua.potaychuk.mvc.View;
+
 /**
  * Created by Potaychuk Sviatoslav on 28.06.2016.
  */
@@ -17,15 +19,28 @@ public class CPU extends Thread{
 
 
     /**
+     * Queue of processes
+     */
+    private CPUQueue queue;
+
+    /**
+     * Constructor
+     * @param queue
+     */
+    public CPU(CPUQueue queue) {
+        this.queue = queue;
+    }
+    /**
      * In this thread processes in queue will be finished and removed from queue
      */
     public void run(){
         while (!interrupted()) {
-           if (CPUQueue.cpuProcesses != 0) {                    //checking for process in queue
+           if (queue.cpuProcesses != 0) {                    //checking for process in queue
                long generateTime = (long) (from+Math.random() * (to-from+1)); //time range of processing process
                try {
                    this.sleep(generateTime);                        //processing
-                   CPUQueue.changeSize(CPUQueue.Change.SUB);        //remove process from queue
+                   queue.changeSize(CPUQueue.Change.SUB);        //remove process from queue
+                   System.out.println(View.PROCESS_REMOVED + " "+ View.SIZE_QUEUE + queue.cpuProcesses);
                } catch (InterruptedException e) {
 //                   e.printStackTrace();
                    interrupt();

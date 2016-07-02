@@ -15,6 +15,9 @@ public class View {
     public static final String CPU = "Input processing range of CPU:";
     public static final String PROCESS = "Input generating time range of processes:";
     public static final String TIME = "Input general time of CPU work:";
+    public static final String PROCESS_GENERATED = "New process in queue!";
+    public static final String PROCESS_REMOVED = "Process is removed!";
+    public static final String SIZE_QUEUE = "Queue size: ";
 
 
     /**

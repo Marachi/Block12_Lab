@@ -12,17 +12,23 @@ public class Model {
     /**
      * CPU
      */
-    private CPU cpu = new CPU();
+    private CPU cpu;
 
     /**
      * Process
      */
-    private CPUProcess cpuProcess = new CPUProcess();
+    private CPUProcess cpuProcess;
 
     /**
      * Queue of processes
      */
-    private CPUQueue cpuQueue = new CPUQueue();
+    private CPUQueue cpuQueue;
+
+    public Model() {
+        cpuQueue = new CPUQueue();
+        cpu = new CPU(cpuQueue);
+        cpuProcess = new CPUProcess(cpuQueue);
+    }
 
     /**
      * This method begins threads for uncertain range of time
@@ -57,7 +63,7 @@ public class Model {
      * @return
      */
     int getMaxQueueSize(){
-        return CPUQueue.maxCpuProcesses;
+        return cpuQueue.maxCpuProcesses;
     }
 
     /**

@@ -12,12 +12,12 @@ public class CPUQueue extends Thread{
     /**
      * It's a size of queue of processes
      */
-    static volatile int cpuProcesses;
+    volatile int cpuProcesses;
 
     /**
      * Max size
      */
-    public static volatile int maxCpuProcesses;
+    public volatile int maxCpuProcesses;
 
     /**
      * There max size of queue will be identified
@@ -29,7 +29,7 @@ public class CPUQueue extends Thread{
          }
       }
     }
-    static synchronized void changeSize(Change action){
+    synchronized void changeSize(Change action){
         if (action.equals(Change.ADD)) {
             cpuProcesses++;
         }else {
